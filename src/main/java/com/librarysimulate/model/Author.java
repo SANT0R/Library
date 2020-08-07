@@ -15,10 +15,24 @@ public class Author  implements Serializable{
     private String author;
 
     @Id
+    @Column(name = "author_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int author_id;
+
     @OneToOne(cascade = CascadeType.ALL)
 
     @OneToMany(mappedBy = "author")
     private Set<Book> books = new HashSet<>();
+
+    public int getAuthor_id()
+    {
+        return author_id;
+    }
+
+    public void setAuthor_id(int author_id)
+    {
+        this.author_id = author_id;
+    }
 
     public String getAuthor()
     {
@@ -44,6 +58,6 @@ public class Author  implements Serializable{
     @Override
     public String toString()
     {
-        return "Author [author=" + author  + "]";
+        return "Author [author_id=" + author_id + "author=" + author  + "]";
     }
 }

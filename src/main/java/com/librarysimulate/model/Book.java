@@ -21,9 +21,9 @@ import javax.persistence.Table;
 public class Book {
 
     @Id
-    @Column(name = "id")
+    @Column(name = "book_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int book_id;
 
     @Column(name = "name")
     private String name;
@@ -38,26 +38,25 @@ public class Book {
     private String description;
 
     @Column(name = "page")
-    private String page;
+    private int page;
 
     @Column(name = "stock")
-    private String stock;
+    private int stock;
 
-    @OneToOne
-    @JoinColumn(name = "client_name")
-    private Client client_name;
-
-    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "book", cascade = CascadeType.ALL)
     private Set<Author> author = new HashSet<>();
 
-    public int getId()
+    @OneToMany(mappedBy = "book_id")
+    private Set<Rent> rents = new HashSet<>();
+
+    public int getBook_id()
     {
-        return id;
+        return book_id;
     }
 
-    public void setId(int id)
+    public void setBook_id(int book_id)
     {
-        this.id = id;
+        this.book_id = book_id;
     }
 
     public String getName()
@@ -100,35 +99,24 @@ public class Book {
         this.description = description;
     }
 
-    public String getPage()
+    public int getPage()
     {
         return page;
     }
 
-    public void setPage(String page)
+    public void setPage(int page)
     {
         this.page = page;
     }
 
-    public String getStock()
+    public int getStock()
     {
         return stock;
     }
 
-    public void setStock(String stock)
+    public void setStock(int stock)
     {
         this.stock = stock;
-    }
-
-
-    public Client getClient_name()
-    {
-        return client_name;
-    }
-
-    public void setClient_name(Client client_name)
-    {
-        this.client_name = client_name;
     }
 
     public Set<Author> getAuthor()
@@ -141,11 +129,21 @@ public class Book {
         this.author = author;
     }
 
+    public Set<Rent> getRents()
+    {
+        return rents;
+    }
+
+    public void setRent(Set<Rent> rents)
+    {
+        this.rents = rents;
+    }
+
     @Override
     public String toString()
     {
-        return "Book [id=" + id + ", name=" + name + ", releaseYear=" + releaseYear + ", type=" + type
-                + ", description=" + description + ", client_name=" + client_name + "]";
+        return "Book [book_id=" + book_id + ", name=" + name + ", releaseYear=" + releaseYear + ", type=" + type
+                + ", description=" + description + ", page=" + page + ", stock=" + stock + "]";
     }
 
 }
