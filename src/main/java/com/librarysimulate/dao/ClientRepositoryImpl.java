@@ -1,5 +1,6 @@
 package com.librarysimulate.dao;
 
+/*
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -32,3 +33,5 @@ public class ClientRepositoryImpl implements ClientRepository {
         entityManager.persist(clients);
     }
 }
+*/
+

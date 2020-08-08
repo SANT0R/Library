@@ -1,5 +1,6 @@
 package com.librarysimulate.dao;
 
+/*
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -45,3 +46,5 @@ public class BookRepositoryImpl implements BookRepository {
         entityManager.remove(entityManager.getReference(Book.class, id));
     }
 }
+*/
+
